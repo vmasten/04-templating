@@ -5,10 +5,10 @@ let articleView = {};
 // TODO: Where possible, refactor methods into arrow functions, including the document.ready() method at the bottom.
 
 // COMMENT: How do arrow functions affect the context of "this"? How did you determine if a function could be refactored?
-// PUT YOUR RESPONSE HERE
+// An arrow function doesn't have its own this, so the outer function needs to be a regular function call. This is determined by the outer context, so it needs to be contained in the overall function.
 
 articleView.populateFilters = function() {
-  $('article').each(function() {
+  $('article').each( () => {
     if (!$(this).hasClass('template')) {
       let val = $(this).find('address a').text();
       let optionTag = `<option value="${val}">${val}</option>`;
@@ -27,7 +27,7 @@ articleView.populateFilters = function() {
 };
 
 articleView.handleAuthorFilter = function() {
-  $('#author-filter').on('change', function() {
+  $('#author-filter').on('change', () => {
     if ($(this).val()) {
       $('article').hide();
       $(`article[data-author="${$(this).val()}"]`).fadeIn();
@@ -40,7 +40,7 @@ articleView.handleAuthorFilter = function() {
 };
 
 articleView.handleCategoryFilter = function() {
-  $('#category-filter').on('change', function() {
+  $('#category-filter').on('change', () => {
     if ($(this).val()) {
       $('article').hide();
       $(`article[data-category="${$(this).val()}"]`).fadeIn();
@@ -79,10 +79,10 @@ articleView.setTeasers = function() {
   });
 };
 
-$(document).ready(function() {
+$(document).ready( () => {
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
-})
+});
