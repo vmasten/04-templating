@@ -40,8 +40,11 @@ Article.prototype.toHtml = function() {
   return theTemplate(this);
 };
 
-// COMMENT: Why are there parentheses around "(a,b)" in the .sort() method, but not around the "articleObject" or "article" arguments in the .forEach() methods?
+// COMMENT: Why are there parentheses around "(a,b)" in the .sort() method, 
+//but not around the "articleObject" or "article"
+// arguments in the .forEach() methods?
 // PUT YOUR RESPONSE HERE
+// A and b in sort method are used to sort individual properties rather than sorting an entire array. They are both callback functions but forEach only needs an array to be passed in.
 rawData.sort((a,b) => {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });

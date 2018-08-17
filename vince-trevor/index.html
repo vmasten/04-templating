@@ -19,15 +19,16 @@
         - If your object doesn't have values you need yet, you can add those properties in the model.
     -->
     <script id="article-template" type="text/x-handlebars-template">
-      <article>
+      <article data-category="{{category}}" data-author="{{author}}">
         <header>
           <h1>{{title}}</h1>
           <div>
-            By <address><a href="{{authorUrl}}">{{author}}
+            By <address><a href="{{authorUrl}}"{{author}}></a>
+              </address>
               {{publishStatus}}
           </div>
         </header>
-        <section class="article-body"></section>
+        <section class="article-body">{{{body}}}</section>
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
